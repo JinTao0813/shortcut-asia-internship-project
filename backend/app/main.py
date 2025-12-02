@@ -69,7 +69,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # Vite dev
-        "http://localhost:3000",  # alternative dev
+        "http://localhost:8001",  # alternative dev
         "https://mindhive-rag-assessment.vercel.app"
     ],
     allow_credentials=True,
