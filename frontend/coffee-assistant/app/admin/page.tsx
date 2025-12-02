@@ -224,9 +224,6 @@ function OutletsTable({
             Address
           </th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Stock
-          </th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
             Actions
           </th>
         </tr>
@@ -239,15 +236,6 @@ function OutletsTable({
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{outlet.category}</td>
             <td className="px-6 py-4 text-sm text-gray-500">{outlet.address}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              <span
-                className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  outlet.stock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                }`}
-              >
-                {outlet.stock ? 'In Stock' : 'Out of Stock'}
-              </span>
-            </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
               <button
                 onClick={() => onEdit(outlet)}
@@ -293,6 +281,9 @@ function ProductsTable({
             Price
           </th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Stock
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
             Image
           </th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -309,9 +300,18 @@ function ProductsTable({
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.category}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.price}</td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <span
+                className={`px-2 py-1 rounded-full text-xs font-medium ${
+                  product.stock > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                }`}
+              >
+                {product.stock > 0 ? `${product.stock} in stock` : 'Out of Stock'}
+              </span>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {product.image_url && (
                 <Image
-                  src={product.image_url}
+                  src={`https:${product.image_url}`}
                   alt={product.name}
                   width={40}
                   height={40}
@@ -354,8 +354,8 @@ function ItemModal({
 }) {
   const initialData = item ||
     (type === 'outlets'
-      ? { name: '', category: '', address: '', maps_url: '', stock: 1 }
-      : { name: '', link: '', category: '', price: '', image_url: '' });
+      ? { name: '', category: '', address: '', maps_url: '' }
+      : { name: '', link: '', category: '', price: '', image_url: '', stock: 0 });
   
   const [formData, setFormData] = useState(initialData);
 
@@ -433,18 +433,6 @@ function ItemModal({
                   required
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Stock Status</label>
-                <select
-                  name="stock"
-                  value={'stock' in formData ? formData.stock : 1}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
-                >
-                  <option value={1}>In Stock</option>
-                  <option value={0}>Out of Stock</option>
-                </select>
-              </div>
             </>
           ) : (
             <>
@@ -499,6 +487,18 @@ function ItemModal({
                   name="image_url"
                   value={'image_url' in formData ? formData.image_url : ''}
                   onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Stock</label>
+                <input
+                  type="number"
+                  name="stock"
+                  value={'stock' in formData ? formData.stock : 0}
+                  onChange={handleChange}
+                  min="0"
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
                   required
                 />

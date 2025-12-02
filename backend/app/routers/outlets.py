@@ -4,8 +4,17 @@ from fastapi import APIRouter, HTTPException, Depends
 from langchain_community.utilities import SQLDatabase
 from app.schemas import NLQuery
 from dependencies import llm, get_db_path, DB_PATH
+from pydantic import BaseModel
+from typing import Optional
 
 router = APIRouter()
+
+class Outlet(BaseModel):
+    id: Optional[int] = None
+    name: str
+    category: str
+    address: str
+    maps_url: Optional[str] = None
 
 def is_safe_select(sql_text: str) -> bool:
     s = sql_text.strip().lower()
@@ -69,3 +78,74 @@ def outlets_text_to_sql(payload: NLQuery):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error generating/executing SQL: {str(e)}")
+
+# CRUD Endpoints for Admin Dashboard
+@router.get("/", response_model=list)
+def get_all_outlets():
+    """Get all outlets from the database"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute("SELECT id, name, category, address, maps_url FROM outlets")
+        rows = [dict(r) for r in cur.fetchall()]
+        conn.close()
+        return rows
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching outlets: {str(e)}")
+
+@router.post("/create")
+def create_outlet(outlet: Outlet):
+    """Create a new outlet"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO outlets (name, category, address, maps_url) VALUES (?, ?, ?, ?)",
+            (outlet.name, outlet.category, outlet.address, outlet.maps_url)
+        )
+        conn.commit()
+        outlet_id = cur.lastrowid
+        conn.close()
+        return {"id": outlet_id, **outlet.dict(exclude={'id'})}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error creating outlet: {str(e)}")
+
+@router.put("/{outlet_id}")
+def update_outlet(outlet_id: int, outlet: Outlet):
+    """Update an existing outlet"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cur = conn.cursor()
+        cur.execute(
+            "UPDATE outlets SET name=?, category=?, address=?, maps_url=? WHERE id=?",
+            (outlet.name, outlet.category, outlet.address, outlet.maps_url, outlet_id)
+        )
+        conn.commit()
+        if cur.rowcount == 0:
+            conn.close()
+            raise HTTPException(status_code=404, detail="Outlet not found")
+        conn.close()
+        return {"id": outlet_id, **outlet.dict(exclude={'id'})}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error updating outlet: {str(e)}")
+
+@router.delete("/{outlet_id}")
+def delete_outlet(outlet_id: int):
+    """Delete an outlet"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cur = conn.cursor()
+        cur.execute("DELETE FROM outlets WHERE id=?", (outlet_id,))
+        conn.commit()
+        if cur.rowcount == 0:
+            conn.close()
+            raise HTTPException(status_code=404, detail="Outlet not found")
+        conn.close()
+        return {"message": "Outlet deleted successfully"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error deleting outlet: {str(e)}")

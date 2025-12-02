@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 interface LoginModalProps {
@@ -23,15 +23,22 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
     setError('');
     setIsLoading(true);
 
-    const success = await login(password);
-    setIsLoading(false);
-
-    if (success) {
-      setPassword('');
-      onSuccess();
-      onClose();
-    } else {
-      setError('Invalid password. Please try again.');
+    try {
+      const success = await login(password);
+      
+      if (success) {
+        // Small delay to ensure auth state is properly set
+        await new Promise(resolve => setTimeout(resolve, 100));
+        setPassword('');
+        onClose();
+        onSuccess();
+      } else {
+        setError('Invalid password. Please try again.');
+      }
+    } catch {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -70,9 +77,10 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-[#0E186C] text-white py-3 rounded-xl font-medium hover:bg-[#0a1150] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-[#0E186C] text-white py-3 rounded-xl font-medium hover:bg-[#0a1150] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
           >
-            {isLoading ? 'Logging in...' : 'Login'}
+            {isLoading && <Loader2 className="animate-spin" size={20} />}
+            <span>{isLoading ? 'Verifying...' : 'Login'}</span>
           </button>
         </form>
       </div>

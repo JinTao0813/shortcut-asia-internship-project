@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sentence_transformers import SentenceTransformer
 import faiss
 
-from app.routers import products, outlets, chat
+from app.routers import products, outlets, chat, admin
 from dependencies import DB_PATH
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -64,13 +64,13 @@ app = FastAPI(lifespan=lifespan)
 # Attach the ml_models dict to app state
 app.state.ml_models = ml_models
 
-# CORS configuration
+# CORS configuration - Must be before routers
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",  # Vite dev
-        "http://localhost:8001",  # alternative dev
-        "https://mindhive-rag-assessment.vercel.app"
+        "http://localhost:3000",  # Next.js dev
+        "http://localhost:5173",  # Vite dev (if needed)
+        "http://127.0.0.1:3000",  # Alternative localhost
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -81,6 +81,7 @@ app.add_middleware(
 app.include_router(products.router, prefix="/products", tags=["Products"])
 app.include_router(outlets.router, prefix="/outlets", tags=["Outlets"])
 app.include_router(chat.router, prefix="/chat", tags=["Chat"])
+app.include_router(admin.router, prefix="/admin", tags=["Admin"])
 
 # ==============================
 # Root endpoint

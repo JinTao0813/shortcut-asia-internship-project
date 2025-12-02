@@ -4,7 +4,6 @@ export interface Outlet {
   category: string;
   address: string;
   maps_url: string;
-  stock: number;
 }
 
 export interface Product {
@@ -14,6 +13,7 @@ export interface Product {
   category: string;
   price: string;
   image_url: string;
+  stock: number;
 }
 
 export interface Message {

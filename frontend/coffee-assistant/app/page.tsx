@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Send, Coffee, LogIn, Loader2 } from 'lucide-react';
+import { Send, Coffee, Loader2, LogIn } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginModal from '@/components/LoginModal';
 import { chatAPI } from '@/lib/api';
@@ -24,8 +24,8 @@ const exampleQueries = [
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState('');
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { isAuthenticated } = useAuth();
   const router = useRouter();
@@ -84,7 +84,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] to-[#e8ebf0]">
+    <div className="min-h-screen bg-linear-to-br from-[#f5f7fa] to-[#e8ebf0]">
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
@@ -105,9 +105,6 @@ export default function Home() {
                 setIsLoginModalOpen(true);
               }
             }}
-              // onClick={() => {
-              //   router.push('/admin');
-              // }}
             className="flex items-center space-x-2 bg-[#0E186C] text-white px-6 py-2.5 rounded-xl hover:bg-[#0a1150] transition-colors font-medium"
           >
             <LogIn size={20} />

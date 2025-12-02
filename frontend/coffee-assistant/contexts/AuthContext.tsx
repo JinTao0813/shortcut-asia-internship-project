@@ -22,6 +22,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       await authAPI.checkAuth();
       setIsAuthenticated(true);
     } catch {
+      // Silently fail - user is just not authenticated
       setIsAuthenticated(false);
     } finally {
       setIsLoading(false);
@@ -34,10 +35,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (password: string): Promise<boolean> => {
     try {
-      await authAPI.login(password);
-      setIsAuthenticated(true);
-      return true;
-    } catch {
+      const response = await authAPI.login(password);
+      if (response.success) {
+        setIsAuthenticated(true);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Login error:', error);
       return false;
     }
   };
