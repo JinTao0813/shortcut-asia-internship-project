@@ -1,0 +1,29 @@
+# --- API & Server (Part 4 & Part 6) ---
+fastapi>=0.100.0
+uvicorn[standard] 
+pydantic 
+python-dotenv 
+
+# --- AI Agents & LangChain (Parts 1, 2, 3) ---
+langchain 
+langchain-community
+langchain-core
+langchain-openai
+langchain-google-genai
+
+# --- RAG & Vector Store (Part 4: Products) ---
+sentence-transformers
+faiss-cpu
+
+# --- Text-to-SQL & Database (Part 4: Outlets) ---
+sqlalchemy
+
+# --- Data Scraping & Processing (Part 4) ---
+beautifulsoup4
+requests
+pandas 
+lxml
+
+# --- Testing (Parts 1 & 5) ---
+pytest
+httpx
