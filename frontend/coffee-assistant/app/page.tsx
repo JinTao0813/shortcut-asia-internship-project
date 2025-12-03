@@ -6,6 +6,7 @@ import { Send, Coffee, Loader2, LogIn } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginModal from '@/components/LoginModal';
 import { chatAPI } from '@/lib/api';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   id: string;
@@ -162,7 +163,13 @@ export default function Home() {
                             : 'bg-gray-100 text-gray-800'
                         }`}
                       >
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                        {message.sender === 'assistant' ? (
+                          <div className="text-sm leading-relaxed prose prose-sm max-w-none">
+                            <ReactMarkdown>{message.text}</ReactMarkdown>
+                          </div>
+                        ) : (
+                          <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                        )}
                         <p className={`text-xs mt-2 ${
                           message.sender === 'user' ? 'text-blue-200' : 'text-gray-500'
                         }`}>

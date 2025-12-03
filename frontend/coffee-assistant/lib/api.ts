@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { Outlet, Product } from '@/types';
+import { Outlet, Product, Food, Drink } from '@/types';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
@@ -214,6 +214,106 @@ export const productsAPI = {
   },
 };
 
+// ==================== Food API ====================
+export const foodAPI = {
+  // Get all food items with pagination
+  getAll: async (page: number = 1, per_page: number = 100) => {
+    const response = await api.get(`/food/?page=${page}&per_page=${per_page}`);
+    return response.data;
+  },
+
+  // Get single food item by ID
+  getById: async (id: number) => {
+    const response = await api.get(`/food/${id}`);
+    return response.data;
+  },
+
+  // Create new food item
+  create: async (food: Omit<Food, 'id'>) => {
+    const response = await api.post('/food/', food);
+    return response.data;
+  },
+
+  // Update food item
+  update: async (id: number, food: Partial<Omit<Food, 'id'>>) => {
+    const response = await api.put(`/food/${id}`, food);
+    return response.data;
+  },
+
+  // Delete food item
+  delete: async (id: number) => {
+    const response = await api.delete(`/food/${id}`);
+    return response.data;
+  },
+
+  // Search food items
+  search: async (params: {
+    name?: string;
+    category?: string;
+    min_price?: number;
+    max_price?: number;
+  }) => {
+    const queryParams = new URLSearchParams();
+    if (params.name) queryParams.append('name', params.name);
+    if (params.category) queryParams.append('category', params.category);
+    if (params.min_price !== undefined) queryParams.append('min_price', params.min_price.toString());
+    if (params.max_price !== undefined) queryParams.append('max_price', params.max_price.toString());
+    
+    const response = await api.get(`/food/search?${queryParams.toString()}`);
+    return response.data;
+  },
+};
+
+// ==================== Drinks API ====================
+export const drinksAPI = {
+  // Get all drinks with pagination
+  getAll: async (page: number = 1, per_page: number = 100) => {
+    const response = await api.get(`/drinks/?page=${page}&per_page=${per_page}`);
+    return response.data;
+  },
+
+  // Get single drink by ID
+  getById: async (id: number) => {
+    const response = await api.get(`/drinks/${id}`);
+    return response.data;
+  },
+
+  // Create new drink
+  create: async (drink: Omit<Drink, 'id'>) => {
+    const response = await api.post('/drinks/', drink);
+    return response.data;
+  },
+
+  // Update drink
+  update: async (id: number, drink: Partial<Omit<Drink, 'id'>>) => {
+    const response = await api.put(`/drinks/${id}`, drink);
+    return response.data;
+  },
+
+  // Delete drink
+  delete: async (id: number) => {
+    const response = await api.delete(`/drinks/${id}`);
+    return response.data;
+  },
+
+  // Search drinks
+  search: async (params: {
+    name?: string;
+    category?: string;
+    min_price?: number;
+    max_price?: number;
+  }) => {
+    const queryParams = new URLSearchParams();
+    if (params.name) queryParams.append('name', params.name);
+    if (params.category) queryParams.append('category', params.category);
+    if (params.min_price !== undefined) queryParams.append('min_price', params.min_price.toString());
+    if (params.max_price !== undefined) queryParams.append('max_price', params.max_price.toString());
+    
+    const response = await api.get(`/drinks/search?${queryParams.toString()}`);
+    return response.data;
+  },
+};
+
 // ==================== Embeddings API ====================
 // Endpoints: POST /embeddings/reindex, GET /embeddings/status
 export const embeddingsAPI = {
@@ -236,5 +336,7 @@ export default {
   auth: authAPI,
   outlets: outletsAPI,
   products: productsAPI,
+  food: foodAPI,
+  drinks: drinksAPI,
   embeddings: embeddingsAPI,
 };

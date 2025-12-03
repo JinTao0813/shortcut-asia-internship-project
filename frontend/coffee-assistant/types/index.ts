@@ -16,6 +16,22 @@ export interface Product {
   stock: number;
 }
 
+export interface Food {
+  id?: number;
+  name: string;
+  category: string;
+  price: number | null;
+  image_url: string;
+}
+
+export interface Drink {
+  id?: number;
+  name: string;
+  category: string;
+  price: number | null;
+  image_url: string;
+}
+
 export interface Message {
   id: string;
   text: string;

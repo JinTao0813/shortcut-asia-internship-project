@@ -60,21 +60,33 @@ def build_embeddings():
     products = cursor.fetchall()
     print(f"   ✓ Found {len(products)} products")
     
-    # 4. Fetch outlets
-    print("\n4. Fetching outlets from database...")
+    # 4. Fetch food items
+    print("\n4. Fetching food items from database...")
+    cursor.execute("SELECT id, name, category, price FROM food")
+    food_items = cursor.fetchall()
+    print(f"   ✓ Found {len(food_items)} food items")
+    
+    # 5. Fetch drinks
+    print("\n5. Fetching drinks from database...")
+    cursor.execute("SELECT id, name, category, price FROM drinks")
+    drinks_items = cursor.fetchall()
+    print(f"   ✓ Found {len(drinks_items)} drinks")
+    
+    # 6. Fetch outlets
+    print("\n6. Fetching outlets from database...")
     cursor.execute("SELECT id, name, category, address FROM outlets")
     outlets = cursor.fetchall()
     print(f"   ✓ Found {len(outlets)} outlets")
     
     conn.close()
     
-    if len(products) == 0 and len(outlets) == 0:
+    if len(products) == 0 and len(food_items) == 0 and len(drinks_items) == 0 and len(outlets) == 0:
         print("\n   ✗ No data found in database!")
         print("   Please run ingest_scraped_data_to_sqlite.py first!")
         return
     
-    # 5. Prepare texts and metadata
-    print("\n5. Preparing texts for embedding...")
+    # 7. Prepare texts and metadata
+    print("\n7. Preparing texts for embedding...")
     texts = []
     metadata = []
     
@@ -85,6 +97,26 @@ def build_embeddings():
         metadata.append({
             "item_type": "drinkware",
             "item_index": prod_id,
+            "text": text
+        })
+    
+    # Add food items
+    for food_id, name, category, price in food_items:
+        text = f"Food: {name}, Category: {category or 'N/A'}, Price: {f'RM{price}' if price else 'N/A'}"
+        texts.append(text)
+        metadata.append({
+            "item_type": "food",
+            "item_index": food_id,
+            "text": text
+        })
+    
+    # Add drinks
+    for drink_id, name, category, price in drinks_items:
+        text = f"Drink: {name}, Category: {category or 'N/A'}, Price: {f'RM{price}' if price else 'N/A'}"
+        texts.append(text)
+        metadata.append({
+            "item_type": "drink",
+            "item_index": drink_id,
             "text": text
         })
     
@@ -100,8 +132,8 @@ def build_embeddings():
     
     print(f"   ✓ Prepared {len(texts)} texts for embedding")
     
-    # 6. Generate embeddings
-    print(f"\n6. Generating embeddings (this may take a minute)...")
+    # 8. Generate embeddings
+    print(f"\n8. Generating embeddings (this may take a minute)...")
     embeddings = embed_model.encode(
         texts, 
         convert_to_numpy=True,
@@ -111,33 +143,33 @@ def build_embeddings():
     print(f"   ✓ Generated {len(embeddings)} embeddings")
     print(f"   ✓ Embedding dimension: {embeddings.shape[1]}")
     
-    # 7. Normalize for cosine similarity
-    print("\n7. Normalizing embeddings for cosine similarity...")
+    # 9. Normalize for cosine similarity
+    print("\n9. Normalizing embeddings for cosine similarity...")
     faiss.normalize_L2(embeddings)
     print("   ✓ Normalized")
     
-    # 8. Create FAISS index
-    print("\n8. Creating FAISS index...")
+    # 10. Create FAISS index
+    print("\n10. Creating FAISS index...")
     dimension = embeddings.shape[1]
     index = faiss.IndexFlatIP(dimension)  # Inner Product (cosine similarity after normalization)
     index.add(embeddings)
     print(f"   ✓ Index created with {index.ntotal} vectors")
     
-    # 9. Save FAISS index
-    print("\n9. Saving FAISS index...")
+    # 11. Save FAISS index
+    print("\n11. Saving FAISS index...")
     os.makedirs(os.path.dirname(FAISS_INDEX_PATH), exist_ok=True)
     faiss.write_index(index, FAISS_INDEX_PATH)
     print(f"   ✓ Saved to: {FAISS_INDEX_PATH}")
     
-    # 10. Save metadata (for compatibility)
-    print("\n10. Saving metadata...")
+    # 12. Save metadata (for compatibility)
+    print("\n12. Saving metadata...")
     os.makedirs(os.path.dirname(META_PATH), exist_ok=True)
     with open(META_PATH, "wb") as f:
         pickle.dump(metadata, f)
     print(f"   ✓ Saved to: {META_PATH}")
     
-    # 11. Save pickle file (legacy format)
-    print("\n11. Saving pickle file (legacy format)...")
+    # 13. Save pickle file (legacy format)
+    print("\n13. Saving pickle file (legacy format)...")
     os.makedirs(os.path.dirname(PKL_PATH), exist_ok=True)
     with open(PKL_PATH, "wb") as f:
         pickle.dump({
@@ -147,8 +179,8 @@ def build_embeddings():
         }, f)
     print(f"   ✓ Saved to: {PKL_PATH}")
     
-    # 12. Update embedding_metadata table in database
-    print("\n12. Updating database embedding_metadata table...")
+    # 14. Update embedding_metadata table in database
+    print("\n14. Updating database embedding_metadata table...")
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
     
@@ -176,8 +208,8 @@ def build_embeddings():
     conn.close()
     print(f"   ✓ Updated {len(metadata)} entries in database")
     
-    # 13. Test the index
-    print("\n13. Testing the index with sample query...")
+    # 15. Test the index
+    print("\n15. Testing the index with sample query...")
     test_query = "coffee tumbler"
     test_embedding = embed_model.encode([test_query], convert_to_numpy=True)
     faiss.normalize_L2(test_embedding)
@@ -195,6 +227,8 @@ def build_embeddings():
     print("=" * 60)
     print(f"\nTotal items indexed: {len(texts)}")
     print(f"  - Products: {len(products)}")
+    print(f"  - Food items: {len(food_items)}")
+    print(f"  - Drinks: {len(drinks_items)}")
     print(f"  - Outlets: {len(outlets)}")
     print(f"\nFiles created:")
     print(f"  - {FAISS_INDEX_PATH}")

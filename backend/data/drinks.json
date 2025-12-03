@@ -1,0 +1,620 @@
+[
+    {
+        "name": "Vietnamese Spanish LattÃ© FrappÃ©",
+        "category": "frappe-buddy",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/11/Vietnamese-Spanish-Latte-Frappe.png"
+    },
+    {
+        "name": "Mango Spanish FrappÃ©",
+        "category": "frappe-buddy",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/11/Mango-Spanish-Frappe.png"
+    },
+    {
+        "name": "Spanish LattÃ© FrappÃ©",
+        "category": "frappe-buddy",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/11/Spanish-Latte-Frappe.png"
+    },
+    {
+        "name": "Ro-Ro-Rosie FrappÃ©",
+        "category": "rosie-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/10/Ro-Ro-Rosie-Frappe.png"
+    },
+    {
+        "name": "Rosie LattÃ©",
+        "category": "rosie-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/10/Iced-Rosie-Latte.png"
+    },
+    {
+        "name": "Rosie Cham LattÃ©",
+        "category": "rosie-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/10/Iced-Rosie-Cham-Latte.png"
+    },
+    {
+        "name": "Pumpkin Spice FrappÃ©",
+        "category": "pumpkin-spice-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/10/Pumpkin-Spice-Frappe.png"
+    },
+    {
+        "name": "Pumpkin Spice Black",
+        "category": "pumpkin-spice-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/10/Iced-Pumpkin-Spice-Black-Latte.png"
+    },
+    {
+        "name": "Pumpkin Spice LattÃ©",
+        "category": "pumpkin-spice-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/10/Iced-Pumpkin-Spice-Latte.png"
+    },
+    {
+        "name": "Tarik Milk Tea",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/10/Iced-Tarik-Milk-Tea.png"
+    },
+    {
+        "name": "Tarik Cham LattÃ©",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Iced-Tarik-Cham-Latte.png"
+    },
+    {
+        "name": "Watermelon Berry Refresher (1L)",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/1L-Watermelon-Berry-Refresher.png"
+    },
+    {
+        "name": "Vietnamese Spanish LattĂ© (1L)",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/1L-Vietnamese-Spanish-Latte?.png"
+    },
+    {
+        "name": "Mango FrappĂ©",
+        "category": "zus-frappe",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Mango-Frappe?.png"
+    },
+    {
+        "name": "SOE CEO Coconut LattĂ©",
+        "category": "soe",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/SOE-Coconut-Latte.png"
+    },
+    {
+        "name": "SOE Spanish LattĂ©",
+        "category": "soe",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/SOE-Spanish-Latte.png"
+    },
+    {
+        "name": "SOE Americano",
+        "category": "soe",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/SOE-Americano.png"
+    },
+    {
+        "name": "SOE CEO LattĂ©",
+        "category": "soe",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/SOE-CEO-Latte.png"
+    },
+    {
+        "name": "Earl Grey Milk Tea",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Earl-Grey-Milk-Tea.png"
+    },
+    {
+        "name": "Earl Grey Cham LattĂ©",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Earl-Grey-Cham-Latte.png"
+    },
+    {
+        "name": "White Peach Oolong Milk Tea",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/White-Peach-Oolong-Milk-Tea.png"
+    },
+    {
+        "name": "Jasmine Milk Tea",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Jasmine-Milk-Tea.png"
+    },
+    {
+        "name": "Dark Oolong Milk Tea",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Dark-Oolong-Milk-Tea.png"
+    },
+    {
+        "name": "White Peach Oolong Cham LattĂ©",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/White-Peach-Oolong-Cham-Latte.png"
+    },
+    {
+        "name": "Jasmine Cham Latté",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Jasmine-Cham-Latte.png"
+    },
+    {
+        "name": "Dark Oolong Cham Latté",
+        "category": "cham-latte",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/09/Dark-Oolong-Cham-Latte.png"
+    },
+    {
+        "name": "Tahitian Lime Refresher",
+        "category": "fruit-refreshers",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/08/Tahitian-Lime-Refresher.png"
+    },
+    {
+        "name": "Mixed Berries Refresher",
+        "category": "fruit-refreshers",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/08/Mixed-Berries-Refresher.png"
+    },
+    {
+        "name": "CEO Coconut Latté",
+        "category": "ceo-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/07/Iced-CEO-Coconut-Latte.png"
+    },
+    {
+        "name": "OATSIDE CEO Latté",
+        "category": "oatside-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Oatside-CEO-Latte.png"
+    },
+    {
+        "name": "Coconut Mocha",
+        "category": "coconut-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/COconut-Mocha.png"
+    },
+    {
+        "name": "Butterscotch Frappé",
+        "category": "butterscotch-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Butterscotch-Frappe-1.png"
+    },
+    {
+        "name": "Butterbae",
+        "category": "butterscotch-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Butterbae-1.png"
+    },
+    {
+        "name": "Butterscotch Latté",
+        "category": "butterscotch-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Iced-Butterscotch-Latte-1.png"
+    },
+    {
+        "name": "Matcha Lemonade",
+        "category": "matcha-macam",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Matcha-Lemonade-1.png"
+    },
+    {
+        "name": "Matcha Strawberry Latté",
+        "category": "matcha-macam",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Matcha-Strawberry-Latte.png"
+    },
+    {
+        "name": "Zirty Matcha LattĂ©",
+        "category": "matcha-macam",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Zirty-Matcha-Latte.png"
+    },
+    {
+        "name": "Not Pistachio LattĂ©",
+        "category": "matcha-macam",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/06/Not-Pistachio-Latte.png"
+    },
+    {
+        "name": "ZUS Signature Curry Puff",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/ZUS-Signature-Curry-Puff.png"
+    },
+    {
+        "name": "Watermelon FrappĂ©",
+        "category": "watermelon-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/02/Watermelon-Frappe.png"
+    },
+    {
+        "name": "Watermelon LattĂ©",
+        "category": "watermelon-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/02/Iced-Watermelon-Latte.png"
+    },
+    {
+        "name": "Icy Spanish LattĂ©",
+        "category": "icy-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/01/Website_SKU-ISL.png"
+    },
+    {
+        "name": "Icy Coconut LattĂ©",
+        "category": "icy-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/01/Website_SKU-ICL.png"
+    },
+    {
+        "name": "Coconut LattĂ©",
+        "category": "coconut-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/01/Iced-Coconut-Latte?1.png"
+    },
+    {
+        "name": "Spanish LattĂ© (with Coconut Milk)",
+        "category": "coconut-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/11/Iced-Coconut-Latte?.png"
+    },
+    {
+        "name": "Iced Cheese CrĂ¨me Caramel Matcha",
+        "category": "creme-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/11/Iced-Cheese-Cre?me-Caramel-Matcha.png"
+    },
+    {
+        "name": "Cheese CrĂ¨me Strawberry FrappĂ©",
+        "category": "zus-frappe",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/11/Cheese-Cre?me-Strawberry-Frappe?1.png"
+    },
+    {
+        "name": "Iced ButtercrĂ¨me Strawberry LattĂ©",
+        "category": "creme-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Iced-Buttercreme-Strawberry-Latte.png"
+    },
+    {
+        "name": "Iced ButtercrĂ¨me Spanish LattĂ©",
+        "category": "creme-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Iced-Buttercreme-Spanish-Latte.png"
+    },
+    {
+        "name": "Iced ButtercrĂ¨me Chocolatta",
+        "category": "creme-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Iced-Buttercreme-Chocolatta.png"
+    },
+    {
+        "name": "Pepsi Cloud",
+        "category": "pepsi",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Pepsi-Cloud.png"
+    },
+    {
+        "name": "Pepsi Sour",
+        "category": "pepsi",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Pepsi-Sour.png"
+    },
+    {
+        "name": "OATSIDE Cafe LattĂ©",
+        "category": "oatside-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/08/OATSDE-Cafe-Latte.png"
+    },
+    {
+        "name": "OATSIDE Japanese Genmaicha LattĂ©",
+        "category": "oatside-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/08/OATSIDE-Japanese-Genmaicha-Latte.png"
+    },
+    {
+        "name": "OATSIDE Spanish LattĂ©",
+        "category": "oatside-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/08/OATSIDE-Spanish-Latte.png"
+    },
+    {
+        "name": "Caramel Cream FrappĂ©",
+        "category": "zus-frappe",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/08/Caramel-Cream-Frappe.png"
+    },
+    {
+        "name": "Vietnamese Spanish LattĂ©",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/08/Vietnamese-Spanish-Latte.png"
+    },
+    {
+        "name": "ButtercrĂ¨me LattĂ©",
+        "category": "creme-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/07/Iced-Buttercreme-Latte.png"
+    },
+    {
+        "name": "Velvet CrĂ¨me LattĂ©",
+        "category": "creme-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/07/Iced-Velvet-Creme-Latte.png"
+    },
+    {
+        "name": "For The Love Of Fruits",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/For-The-Love-of-Fruits.png"
+    },
+    {
+        "name": "Oh My Orange “ZUS”",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/Oh-My-Orange.png"
+    },
+    {
+        "name": "ZUS Mineral Water",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/ZUS-Mineral-Water.png"
+    },
+    {
+        "name": "Cafe Mocha (1L)",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/RTD-Cafe-Mocha.png"
+    },
+    {
+        "name": "Cafe LattÃ© (1L)",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/RTD-Cafe-Latte.png"
+    },
+    {
+        "name": "Spanish LattÃ© (1L)",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/RTD-Spanish-Latte-1.png"
+    },
+    {
+        "name": "Americano (1L)",
+        "category": "bottled-necessity",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/RTD-Americano.png"
+    },
+    {
+        "name": "Green Tea LattÃ©",
+        "category": "tea",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/green_tea_latte.png"
+    },
+    {
+        "name": "Roasted Hazelnut Chocolate",
+        "category": "chocolate",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/roasted-hazelnut-choco.png"
+    },
+    {
+        "name": "French Vanilla Chocolate",
+        "category": "chocolate",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/french-vanilla-choco.png"
+    },
+    {
+        "name": "Salted Caramel Chocolate",
+        "category": "chocolate",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/salted-caramel-choco.png"
+    },
+    {
+        "name": "Australian Chocolate",
+        "category": "chocolate",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/australian-chocolate.png"
+    },
+    {
+        "name": "Pink Black",
+        "category": "coffee-mocktail-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/pink_black.png"
+    },
+    {
+        "name": "Pink Lemonade",
+        "category": "refresher",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/pink_lemonade.png"
+    },
+    {
+        "name": "ZUS Lemonade",
+        "category": "refresher",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/zus-lemonade.png"
+    },
+    {
+        "name": "Creamy Mango",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/creamy-mango.png"
+    },
+    {
+        "name": "Lychee Strawberry Cooler",
+        "category": "refresher",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/lychee-cooler.png"
+    },
+    {
+        "name": "Espresso",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/espresso.png"
+    },
+    {
+        "name": "Flat White",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/flat-white.png"
+    },
+    {
+        "name": "Babycino",
+        "category": "kiddo-friendly",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/babycino.png"
+    },
+    {
+        "name": "Americano",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/Americano.png"
+    },
+    {
+        "name": "Salted Caramel Latté",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/salted_caramel_latte.png"
+    },
+    {
+        "name": "Roasted Hazelnut Latté",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/roasted_hazelnut_latte.png"
+    },
+    {
+        "name": "French Vanilla Latté",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/french_vanilla_latte.png"
+    },
+    {
+        "name": "Cafe Latté",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/iced_latte.png"
+    },
+    {
+        "name": "Cappuccino",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/cappuccino.png"
+    },
+    {
+        "name": "Caramel Macchiato",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/caramel_macchiato.png"
+    },
+    {
+        "name": "CafÃ© Mocha",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/iced_cafe-mocha.png"
+    },
+    {
+        "name": "Keto Black",
+        "category": "functional",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/keto_black.png"
+    },
+    {
+        "name": "ZERO FrappÃ©",
+        "category": "functional",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/zero_frappe.png"
+    },
+    {
+        "name": "ZERO LattÃ©",
+        "category": "functional",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/zero_latte.png"
+    },
+    {
+        "name": "CEO LattÃ©",
+        "category": "ceo-series",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/ceo_latte.png"
+    },
+    {
+        "name": "Spanish LattÃ©",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/spanish_latte.png"
+    },
+    {
+        "name": "Matcho LattÃ©",
+        "category": "chocolate",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/iced_matcho.png"
+    },
+    {
+        "name": "ZUS Gula Melaka",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/zus_gula_melaka.png"
+    },
+    {
+        "name": "Zirty LattÃ©",
+        "category": "coffee",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/dirty_latte.png"
+    },
+    {
+        "name": "Japanese Matcha FrappÃ©",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/jap-matcha-frappe.png"
+    },
+    {
+        "name": "Double Chocolate Chip Frappé",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/double-choc-frappe.png"
+    },
+    {
+        "name": "Salted Caramel Frappé",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/salted-caramel-frappe.png"
+    },
+    {
+        "name": "Java Chip Frappé",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/java_chip.png"
+    },
+    {
+        "name": "Espresso Frappé",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/05/espresso_frappe.png"
+    },
+    {
+        "name": "Thunder",
+        "category": "coffee-mocktail-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/03/coffee_05.png"
+    },
+    {
+        "name": "Cocoa Mocha Frappé",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/03/coffee_04.png"
+    },
+    {
+        "name": "Japanese Genmaicha Latté",
+        "category": "home-page-special-drinks",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/03/genmaicha.png"
+    }
+]

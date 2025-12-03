@@ -1,0 +1,230 @@
+[
+    {
+        "name": "Kapitan Chicken Curry with Rice",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Kapitan-Chicken-Curry-with-Rice.png"
+    },
+    {
+        "name": "Ayam Masak Merah with Rice",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Ayam-Masak-Merah-with-Rice.png"
+    },
+    {
+        "name": "Kampung Fried Rice",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Kampung-Fried-Rice.png"
+    },
+    {
+        "name": "Pak Nasser’s Nasi Lemak Ayam Rendang",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Pak-Nassers-Nasi-Lemak-Ayan-Rendang.png"
+    },
+    {
+        "name": "Big Brekkie Croissant",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Big-Brekkie-Croissant.png"
+    },
+    {
+        "name": "Pearl Sugar Waffle",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Pearl-Sugar-Waffle.png"
+    },
+    {
+        "name": "ZUS Signature Curry Puff",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/ZUS-Signature-Curry-Puff.png"
+    },
+    {
+        "name": "Biscoff Baked Cheese Cake",
+        "category": "cakes",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Biscoff-Bakes-Cheesecake.png"
+    },
+    {
+        "name": "Pearl Sugar Waffle Soft Serve",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2024/05/Pearl-Sugar-Waffle-Soft-Serve-3.png"
+    },
+    {
+        "name": "BBQ Peanut Crunch",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/BBQ_Peanut_Crunch.png"
+    },
+    {
+        "name": "Dark Chocolate Chip Cookies",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Dark_Chocolate_Chip_Cookies.png"
+    },
+    {
+        "name": "Butterscotch Cashew Chocolate Chip Cookies",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Butterscotch_Cashew_Chocolate_Chip_Cookies.png"
+    },
+    {
+        "name": "Mini Banana Bread Granola Bites (40g)",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Mini-Banana-Bread-Granola-Bites.png"
+    },
+    {
+        "name": "Mini Chocolate Hazelnut Granola Bites (40g)",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Mini-Chocolate-Hazelnut-Granola-Bites.png"
+    },
+    {
+        "name": "Mini Pandan Coconut Nut Mix (30g)",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Mini-Pandan-Coconut-Nut-Mix.png"
+    },
+    {
+        "name": "Classic Nasi Lemak with Curry Chicken",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Classic-Nasi-Lemak-with-Curry-Chicken.png"
+    },
+    {
+        "name": "Soft Boiled Eggs",
+        "category": "local-menu",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Untitled-design-1.png"
+    },
+    {
+        "name": "Vienna Latté Float",
+        "category": "soft-serve",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/10/Vienna-Latte-Float-1.png"
+    },
+    {
+        "name": "Affogato",
+        "category": "soft-serve",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Affogato-1.png"
+    },
+    {
+        "name": "Drizzle Soft Serve",
+        "category": "soft-serve",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Drizzle_Soft_Serve.png"
+    },
+    {
+        "name": "Vanilla Soft Serve",
+        "category": "soft-serve",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Vanilla_Soft_Serve.png"
+    },
+    {
+        "name": "Toast with Curry Chicken",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Toast-with-Curry-Chicken.png"
+    },
+    {
+        "name": "Kaya Butter Toast",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Kaya-Butter-Toast-1.png"
+    },
+    {
+        "name": "Kaya Butter Toast with Soft Boiled Eggs",
+        "category": "food",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Kaya-Butter-Toast-with-Soft-Boiled-Eggs-1.png"
+    },
+    {
+        "name": "Tasty Chicken Sandwich",
+        "category": "sandwiches",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Chicken_Slice___Cheese_Sandwich.png"
+    },
+    {
+        "name": "Tuna & Egg Sandwich",
+        "category": "sandwiches",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/09/Tuna_Cheese_Sandwich.png"
+    },
+    {
+        "name": "Egg Mayo Sandwich",
+        "category": "sandwiches",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/08/Egg_Mayo_Sandwich.png"
+    },
+    {
+        "name": "Tom Yum Chicken Puff",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2023/08/Tom-Yum-Puff-1.png"
+    },
+    {
+        "name": "Chocolate Roll",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/rsz_chocolate_danish_roll-1.jpg"
+    },
+    {
+        "name": "Chicken Slice & Cheese Croissant",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/rsz_11o1a3679-1.png"
+    },
+    {
+        "name": "Spaghetti Carbonara",
+        "category": "hot-meals",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/rsz_carbonara.jpg"
+    },
+    {
+        "name": "Korean Mac & Cheese",
+        "category": "hot-meals",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/rsz_61o1a5484-1.png"
+    },
+    {
+        "name": "Mushroom Chicken Deluxe",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/rsz_1o1a3686-1.png"
+    },
+    {
+        "name": "Strawberry Donut",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/strawberry-donut.png"
+    },
+    {
+        "name": "Chocolate Donut",
+        "category": "pastries",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/choc-donut-.png"
+    },
+    {
+        "name": "Burnt Cheese Cake",
+        "category": "cakes",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/dda.png"
+    },
+    {
+        "name": "Summer Berries Cheese Cake",
+        "category": "cakes",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/summerberries-cake.png"
+    },
+    {
+        "name": "ZUS Signature Chicken Lasagna",
+        "category": "hot-meals",
+        "price": null,
+        "image_url": "https://zuscoffee.com/wp-content/uploads/2022/06/rsz_chimken_lasagna.jpg"
+    }
+]

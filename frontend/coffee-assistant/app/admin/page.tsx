@@ -2,21 +2,23 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { Coffee, LogOut, Store, Package, Pencil, Trash2, Plus, X } from 'lucide-react';
+import { Coffee, LogOut, Store, Package, Pencil, Trash2, Plus, X, UtensilsCrossed, Wine } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import { outletsAPI, productsAPI } from '@/lib/api';
-import { Outlet, Product } from '@/types';
+import { outletsAPI, productsAPI, foodAPI, drinksAPI } from '@/lib/api';
+import { Outlet, Product, Food, Drink } from '@/types';
 import Image from 'next/image';
 
-type TabType = 'outlets' | 'products';
+type TabType = 'outlets' | 'products' | 'food' | 'drinks';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<TabType>('outlets');
   const [outlets, setOutlets] = useState<Outlet[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+  const [food, setFood] = useState<Food[]>([]);
+  const [drinks, setDrinks] = useState<Drink[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingItem, setEditingItem] = useState<Outlet | Product | null>(null);
+  const [editingItem, setEditingItem] = useState<Outlet | Product | Food | Drink | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { logout } = useAuth();
   const router = useRouter();
@@ -27,9 +29,15 @@ export default function AdminDashboard() {
       if (activeTab === 'outlets') {
         const data = await outletsAPI.getAll();
         setOutlets(data);
-      } else {
+      } else if (activeTab === 'products') {
         const data = await productsAPI.getAll();
         setProducts(data);
+      } else if (activeTab === 'food') {
+        const data = await foodAPI.getAll();
+        setFood(data);
+      } else if (activeTab === 'drinks') {
+        const data = await drinksAPI.getAll();
+        setDrinks(data);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -52,7 +60,7 @@ export default function AdminDashboard() {
     setIsModalOpen(true);
   };
 
-  const handleEdit = (item: Outlet | Product) => {
+  const handleEdit = (item: Outlet | Product | Food | Drink) => {
     setEditingItem(item);
     setIsModalOpen(true);
   };
@@ -63,8 +71,12 @@ export default function AdminDashboard() {
     try {
       if (activeTab === 'outlets') {
         await outletsAPI.delete(id);
-      } else {
+      } else if (activeTab === 'products') {
         await productsAPI.delete(id);
+      } else if (activeTab === 'food') {
+        await foodAPI.delete(id);
+      } else if (activeTab === 'drinks') {
+        await drinksAPI.delete(id);
       }
       fetchData();
     } catch (error) {
@@ -73,7 +85,7 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleSave = async (data: Outlet | Product) => {
+  const handleSave = async (data: Outlet | Product | Food | Drink) => {
     try {
       if (activeTab === 'outlets') {
         const outletData = data as Outlet;
@@ -82,12 +94,26 @@ export default function AdminDashboard() {
         } else {
           await outletsAPI.create(outletData);
         }
-      } else {
+      } else if (activeTab === 'products') {
         const productData = data as Product;
         if (editingItem && 'id' in editingItem) {
           await productsAPI.update(editingItem.id!, productData);
         } else {
           await productsAPI.create(productData);
+        }
+      } else if (activeTab === 'food') {
+        const foodData = data as Food;
+        if (editingItem && 'id' in editingItem) {
+          await foodAPI.update(editingItem.id!, foodData);
+        } else {
+          await foodAPI.create(foodData);
+        }
+      } else if (activeTab === 'drinks') {
+        const drinkData = data as Drink;
+        if (editingItem && 'id' in editingItem) {
+          await drinksAPI.update(editingItem.id!, drinkData);
+        } else {
+          await drinksAPI.create(drinkData);
         }
       }
       setIsModalOpen(false);
@@ -138,7 +164,7 @@ export default function AdminDashboard() {
                   }`}
                 >
                   <Store size={20} />
-                  <span>Outlet Management</span>
+                  <span>Outlets</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('products')}
@@ -149,7 +175,29 @@ export default function AdminDashboard() {
                   }`}
                 >
                   <Package size={20} />
-                  <span>Product Management</span>
+                  <span>Products</span>
+                </button>
+                <button
+                  onClick={() => setActiveTab('food')}
+                  className={`flex items-center space-x-2 px-6 py-4 font-medium transition-colors border-b-2 ${
+                    activeTab === 'food'
+                      ? 'border-[#0E186C] text-[#0E186C]'
+                      : 'border-transparent text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  <UtensilsCrossed size={20} />
+                  <span>Food</span>
+                </button>
+                <button
+                  onClick={() => setActiveTab('drinks')}
+                  className={`flex items-center space-x-2 px-6 py-4 font-medium transition-colors border-b-2 ${
+                    activeTab === 'drinks'
+                      ? 'border-[#0E186C] text-[#0E186C]'
+                      : 'border-transparent text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  <Wine size={20} />
+                  <span>Drinks</span>
                 </button>
               </div>
             </div>
@@ -158,14 +206,14 @@ export default function AdminDashboard() {
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-gray-800">
-                  {activeTab === 'outlets' ? 'Outlets' : 'Products'}
+                  {activeTab === 'outlets' ? 'Outlets' : activeTab === 'products' ? 'Products' : activeTab === 'food' ? 'Food Items' : 'Drinks'}
                 </h2>
                 <button
                   onClick={handleAdd}
                   className="flex items-center space-x-2 bg-[#0E186C] text-white px-4 py-2 rounded-xl hover:bg-[#0a1150] transition-colors"
                 >
                   <Plus size={20} />
-                  <span>Add {activeTab === 'outlets' ? 'Outlet' : 'Product'}</span>
+                  <span>Add {activeTab === 'outlets' ? 'Outlet' : activeTab === 'products' ? 'Product' : activeTab === 'food' ? 'Food' : 'Drink'}</span>
                 </button>
               </div>
 
@@ -177,8 +225,12 @@ export default function AdminDashboard() {
                 <div className="overflow-x-auto">
                   {activeTab === 'outlets' ? (
                     <OutletsTable outlets={outlets} onEdit={handleEdit} onDelete={handleDelete} />
-                  ) : (
+                  ) : activeTab === 'products' ? (
                     <ProductsTable products={products} onEdit={handleEdit} onDelete={handleDelete} />
+                  ) : activeTab === 'food' ? (
+                    <FoodTable food={food} onEdit={handleEdit} onDelete={handleDelete} />
+                  ) : (
+                    <DrinksTable drinks={drinks} onEdit={handleEdit} onDelete={handleDelete} />
                   )}
                 </div>
               )}
@@ -311,7 +363,7 @@ function ProductsTable({
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {product.image_url && (
                 <Image
-                  src={`https:${product.image_url}`}
+                  src={`${product.image_url}`}
                   alt={product.name}
                   width={40}
                   height={40}
@@ -340,6 +392,152 @@ function ProductsTable({
   );
 }
 
+// Food Table Component
+function FoodTable({
+  food,
+  onEdit,
+  onDelete,
+}: {
+  food: Food[];
+  onEdit: (food: Food) => void;
+  onDelete: (id: number) => void;
+}) {
+  return (
+    <table className="min-w-full divide-y divide-gray-200">
+      <thead className="bg-gray-50">
+        <tr>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Name
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Category
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Price
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Image
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white divide-y divide-gray-200">
+        {food.map((item) => (
+          <tr key={item.id}>
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              {item.name}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.category}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              {item.price ? `RM${item.price}` : 'N/A'}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              {item.image_url && (
+                <Image
+                  src={item.image_url}
+                  alt={item.name}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded-lg object-cover"
+                />
+              )}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <button
+                onClick={() => onEdit(item)}
+                className="text-[#0E186C] hover:text-[#0a1150] mr-4"
+              >
+                <Pencil size={18} />
+              </button>
+              <button
+                onClick={() => onDelete(item.id!)}
+                className="text-red-600 hover:text-red-800"
+              >
+                <Trash2 size={18} />
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+// Drinks Table Component
+function DrinksTable({
+  drinks,
+  onEdit,
+  onDelete,
+}: {
+  drinks: Drink[];
+  onEdit: (drink: Drink) => void;
+  onDelete: (id: number) => void;
+}) {
+  return (
+    <table className="min-w-full divide-y divide-gray-200">
+      <thead className="bg-gray-50">
+        <tr>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Name
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Category
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Price
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Image
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white divide-y divide-gray-200">
+        {drinks.map((drink) => (
+          <tr key={drink.id}>
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              {drink.name}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{drink.category}</td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              {drink.price ? `RM${drink.price}` : 'N/A'}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              {drink.image_url && (
+                <Image
+                  src={drink.image_url}
+                  alt={drink.name}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 rounded-lg object-cover"
+                />
+              )}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <button
+                onClick={() => onEdit(drink)}
+                className="text-[#0E186C] hover:text-[#0a1150] mr-4"
+              >
+                <Pencil size={18} />
+              </button>
+              <button
+                onClick={() => onDelete(drink.id!)}
+                className="text-red-600 hover:text-red-800"
+              >
+                <Trash2 size={18} />
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 // Item Modal Component
 function ItemModal({
   type,
@@ -348,14 +546,18 @@ function ItemModal({
   onSave,
 }: {
   type: TabType;
-  item: Outlet | Product | null;
+  item: Outlet | Product | Food | Drink | null;
   onClose: () => void;
-  onSave: (data: Outlet | Product) => void;
+  onSave: (data: Outlet | Product | Food | Drink) => void;
 }) {
   const initialData = item ||
     (type === 'outlets'
       ? { name: '', category: '', address: '', maps_url: '' }
-      : { name: '', link: '', category: '', price: '', image_url: '', stock: 0 });
+      : type === 'products'
+      ? { name: '', link: '', category: '', price: '', image_url: '', stock: 0 }
+      : type === 'food'
+      ? { name: '', category: '', price: null, image_url: '' }
+      : { name: '', category: '', price: null, image_url: '' });
   
   const [formData, setFormData] = useState(initialData);
 
@@ -368,7 +570,7 @@ function ItemModal({
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'stock' ? parseInt(value) : value,
+      [name]: name === 'stock' ? parseInt(value) : name === 'price' && value === '' ? null : value,
     }));
   };
 
@@ -383,7 +585,7 @@ function ItemModal({
         </button>
 
         <h2 className="text-2xl font-bold text-[#0E186C] mb-6">
-          {item ? 'Edit' : 'Add'} {type === 'outlets' ? 'Outlet' : 'Product'}
+          {item ? 'Edit' : 'Add'} {type === 'outlets' ? 'Outlet' : type === 'products' ? 'Product' : type === 'food' ? 'Food' : 'Drink'}
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -434,7 +636,7 @@ function ItemModal({
                 />
               </div>
             </>
-          ) : (
+          ) : type === 'products' ? (
             <>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
@@ -504,7 +706,54 @@ function ItemModal({
                 />
               </div>
             </>
-          )}
+          ) : type === 'food' || type === 'drinks' ? (
+            <>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                <input
+                  type="text"
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Price (Optional)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  name="price"
+                  value={'price' in formData && formData.price !== null ? formData.price : ''}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Image URL</label>
+                <input
+                  type="url"
+                  name="image_url"
+                  value={'image_url' in formData ? formData.image_url : ''}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
+                  required
+                />
+              </div>
+            </>
+          ) : null}
 
           <div className="flex space-x-3 pt-4">
             <button

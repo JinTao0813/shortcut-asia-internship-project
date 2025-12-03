@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sentence_transformers import SentenceTransformer
 import faiss
 
-from routers import products, outlets, chat, embeddings, admin
+from routers import products, outlets, food, drinks, chat, embeddings, admin
 from dependencies import DATA_DIR, DATABASE_DIR, DATABASE_PATH, OUTLETS_JSON, DRINKWARE_JSON, PKL_PATH, META_PATH, EMBEDDING_MODEL, FAISS_INDEX_PATH
 
 # Global dictionary to hold ML models
@@ -83,6 +83,8 @@ app.add_middleware(
 # Include routers
 app.include_router(products.router, prefix="/products", tags=["Products"])
 app.include_router(outlets.router, prefix="/outlets", tags=["Outlets"])
+app.include_router(food.router, prefix="/food", tags=["Food"])
+app.include_router(drinks.router, prefix="/drinks", tags=["Drinks"])
 app.include_router(chat.router, prefix="/chat", tags=["Chat"])
 app.include_router(embeddings.router, prefix="/embeddings", tags=["Embeddings"])
 app.include_router(admin.router, prefix="/admin", tags=["Admin"])

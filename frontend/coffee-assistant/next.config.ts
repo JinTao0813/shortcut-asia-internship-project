@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'shop.zuscoffee.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'zuscoffee.com',
+        pathname: '/**',
+      },
     ],
   },
 };

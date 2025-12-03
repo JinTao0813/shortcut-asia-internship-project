@@ -17,6 +17,8 @@ def create_agent_instance(llm_instance=None):
         "You are a helpful assistant for ZUS Coffee internal operations.\n\n"
         "CRITICAL: You MUST use the 'zus_rag_search' tool for ANY question about:\n"
         "- Products, drinkware, tumblers, cups, or merchandise\n"
+        "- Food items, meals, pastries, or food menu\n"
+        "- Drinks, beverages, coffee, tea, or drink menu\n"
         "- Outlets, stores, locations, or addresses\n"
         "- Prices, categories, or product details\n"
         "- Store hours, contact info, or outlet information\n\n"

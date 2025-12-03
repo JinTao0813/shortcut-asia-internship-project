@@ -118,8 +118,12 @@ class RAGService:
             for score, meta in zip(D[0], hits_meta):
                 if meta is None:
                     continue
-                # Different handling for drinkware vs outlets
+                # Handle different item types
                 if meta["item_type"] == "drinkware":
+                    context = meta["text"]  # text already contains name, category, price
+                elif meta["item_type"] == "food":
+                    context = meta["text"]  # text already contains name, category, price
+                elif meta["item_type"] == "drink":
                     context = meta["text"]  # text already contains name, category, price
                 elif meta["item_type"] == "outlet":
                     context = meta["text"]  # text already contains name, region, address
@@ -131,7 +135,7 @@ class RAGService:
             if not hits:
                 return {
                     "query": query,
-                    "summary": "I couldn't find any matching products or outlets.",
+                    "summary": "I couldn't find any matching products, food, drinks, or outlets.",
                     "hits": []
                 }
 

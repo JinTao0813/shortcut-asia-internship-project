@@ -56,6 +56,50 @@ class Outlet(OutletBase):
     class Config:
         from_attributes = True
 
+# ==================== Food Schemas ====================
+class FoodBase(BaseModel):
+    name: str
+    category: Optional[str] = None
+    price: Optional[float] = None
+    image_url: Optional[str] = None
+
+class FoodCreate(FoodBase):
+    pass
+
+class FoodUpdate(BaseModel):
+    name: Optional[str] = None
+    category: Optional[str] = None
+    price: Optional[float] = None
+    image_url: Optional[str] = None
+
+class Food(FoodBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+# ==================== Drink Schemas ====================
+class DrinkBase(BaseModel):
+    name: str
+    category: Optional[str] = None
+    price: Optional[float] = None
+    image_url: Optional[str] = None
+
+class DrinkCreate(DrinkBase):
+    pass
+
+class DrinkUpdate(BaseModel):
+    name: Optional[str] = None
+    category: Optional[str] = None
+    price: Optional[float] = None
+    image_url: Optional[str] = None
+
+class Drink(DrinkBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
 # ==================== Chat Schemas ====================
 class ChatMessage(BaseModel):
     role: str  # "user" or "assistant"

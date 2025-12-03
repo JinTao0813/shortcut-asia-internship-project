@@ -34,6 +34,8 @@ def scrape_drinkware():
 
         img_tag = card.select_one(".product-card__figure a img")
         image_url = img_tag["src"] if img_tag and img_tag.has_attr("src") else None
+        if image_url and image_url.startswith("//"):
+            image_url = "https:" + image_url
 
         products.append({
             "name": title,
