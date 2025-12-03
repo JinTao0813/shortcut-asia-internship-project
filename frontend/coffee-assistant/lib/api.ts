@@ -1,8 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import { Outlet, Product } from '@/types';
 
-// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001';
-const API_BASE_URL ='http://localhost:8001';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -45,15 +44,61 @@ api.interceptors.response.use(
   }
 );
 
-// Chat API
+// ==================== Types ====================
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export interface ChatRequest {
+  message: string;
+  session_id?: string;
+  history?: ChatMessage[];
+}
+
+export interface ChatResponse {
+  response: string;
+  session_id: string;
+}
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  page: number;
+  per_page: number;
+  total_pages: number;
+}
+
+// ==================== Chat API ====================
+// Endpoints: POST /chat/, POST /chat/query, GET /chat/history/{session_id}, DELETE /chat/history/{session_id}
 export const chatAPI = {
-  sendMessage: async (message: string, session_id: string = '1') => {
-    const response = await api.post('/chat/', { message, session_id });
+  // Main chat endpoint with agent
+  sendMessage: async (message: string, session_id: string = 'default', history: ChatMessage[] = []) => {
+    const response = await api.post('/chat/', { message, session_id, history });
+    return response.data;
+  },
+
+  // Direct RAG query (faster, no agent)
+  queryRAG: async (query: string, top_k: number = 5) => {
+    const response = await api.post('/chat/query', { query, top_k });
+    return response.data;
+  },
+
+  // Get chat history
+  getHistory: async (session_id: string) => {
+    const response = await api.get(`/chat/history/${session_id}`);
+    return response.data;
+  },
+
+  // Clear chat history
+  clearHistory: async (session_id: string) => {
+    const response = await api.delete(`/chat/history/${session_id}`);
     return response.data;
   },
 };
 
-// Auth API
+// ==================== Auth API ====================
+// Note: You'll need to implement these endpoints in your backend
 export const authAPI = {
   login: async (password: string) => {
     const response = await api.post('/admin/login', { password });
@@ -69,42 +114,127 @@ export const authAPI = {
   },
 };
 
-// Outlets API
+// ==================== Outlets API ====================
+// Endpoints: GET /outlets/, GET /outlets/{id}, POST /outlets/, PUT /outlets/{id}, DELETE /outlets/{id}, GET /outlets/search
 export const outletsAPI = {
-  getAll: async () => {
-    const response = await api.get('/outlets/');
+  // Get all outlets with pagination
+  getAll: async (page: number = 1, per_page: number = 100) => {
+    const response = await api.get(`/outlets/?page=${page}&per_page=${per_page}`);
     return response.data;
   },
+
+  // Get single outlet by ID
+  getById: async (id: number) => {
+    const response = await api.get(`/outlets/${id}`);
+    return response.data;
+  },
+
+  // Create new outlet
   create: async (outlet: Omit<Outlet, 'id'>) => {
-    const response = await api.post('/outlets/create', outlet);
+    const response = await api.post('/outlets/', outlet);
     return response.data;
   },
-  update: async (id: number, outlet: Omit<Outlet, 'id'>) => {
+
+  // Update outlet
+  update: async (id: number, outlet: Partial<Omit<Outlet, 'id'>>) => {
     const response = await api.put(`/outlets/${id}`, outlet);
     return response.data;
   },
+
+  // Delete outlet
   delete: async (id: number) => {
     const response = await api.delete(`/outlets/${id}`);
     return response.data;
   },
+
+  // Search outlets
+  search: async (params: {
+    name?: string;
+    category?: string;
+    address?: string;
+  }) => {
+    const queryParams = new URLSearchParams();
+    if (params.name) queryParams.append('name', params.name);
+    if (params.category) queryParams.append('category', params.category);
+    if (params.address) queryParams.append('address', params.address);
+    
+    const response = await api.get(`/outlets/search?${queryParams.toString()}`);
+    return response.data;
+  },
 };
 
-// Products API
+// ==================== Products API ====================
+// Endpoints: GET /products/, GET /products/{id}, POST /products/, PUT /products/{id}, DELETE /products/{id}, GET /products/search
 export const productsAPI = {
-  getAll: async () => {
-    const response = await api.get('/products/all');
+  // Get all products with pagination
+  getAll: async (page: number = 1, per_page: number = 100) => {
+    const response = await api.get(`/products/?page=${page}&per_page=${per_page}`);
     return response.data;
   },
+
+  // Get single product by ID
+  getById: async (id: number) => {
+    const response = await api.get(`/products/${id}`);
+    return response.data;
+  },
+
+  // Create new product
   create: async (product: Omit<Product, 'id'>) => {
-    const response = await api.post('/products/create', product);
+    const response = await api.post('/products/', product);
     return response.data;
   },
-  update: async (id: number, product: Omit<Product, 'id'>) => {
+
+  // Update product
+  update: async (id: number, product: Partial<Omit<Product, 'id'>>) => {
     const response = await api.put(`/products/${id}`, product);
     return response.data;
   },
+
+  // Delete product
   delete: async (id: number) => {
     const response = await api.delete(`/products/${id}`);
     return response.data;
   },
+
+  // Search products
+  search: async (params: {
+    name?: string;
+    category?: string;
+    min_price?: number;
+    max_price?: number;
+  }) => {
+    const queryParams = new URLSearchParams();
+    if (params.name) queryParams.append('name', params.name);
+    if (params.category) queryParams.append('category', params.category);
+    if (params.min_price !== undefined) queryParams.append('min_price', params.min_price.toString());
+    if (params.max_price !== undefined) queryParams.append('max_price', params.max_price.toString());
+    
+    const response = await api.get(`/products/search?${queryParams.toString()}`);
+    return response.data;
+  },
+};
+
+// ==================== Embeddings API ====================
+// Endpoints: POST /embeddings/reindex, GET /embeddings/status
+export const embeddingsAPI = {
+  // Reindex embeddings after CRUD operations
+  reindex: async () => {
+    const response = await api.post('/embeddings/reindex');
+    return response.data;
+  },
+
+  // Get index status
+  getStatus: async () => {
+    const response = await api.get('/embeddings/status');
+    return response.data;
+  },
+};
+
+// Export default API object
+export default {
+  chat: chatAPI,
+  auth: authAPI,
+  outlets: outletsAPI,
+  products: productsAPI,
+  embeddings: embeddingsAPI,
 };
