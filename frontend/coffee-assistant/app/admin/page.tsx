@@ -570,7 +570,11 @@ function ItemModal({
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'stock' ? parseInt(value) : name === 'price' && value === '' ? null : value,
+      [name]: name === 'stock' 
+        ? parseInt(value) 
+        : name === 'price' 
+          ? (value === '' ? null : parseFloat(value))
+          : value,
     }));
   };
 
@@ -676,7 +680,7 @@ function ItemModal({
                 <input
                   type="text"
                   name="price"
-                  value={'price' in formData ? formData.price : ''}
+                  value={'price' in formData ? (formData.price ?? '') : ''}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0E186C]"
                   required
