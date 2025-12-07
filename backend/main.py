@@ -74,6 +74,8 @@ app.add_middleware(
         "http://localhost:5173",  # Vite dev
         "http://localhost:8000",  # Backend dev
         "http://localhost:8001",  # Alternative port
+        "https://shortcut-asia-internship-project.vercel.app",  # Fixed: removed trailing slash
+        "https://*.ngrok.io",  # ngrok temporary URLs
     ],
     allow_credentials=True,
     allow_methods=["*"],
