@@ -3,13 +3,16 @@
 ## 🚀 Getting Started
 
 ### Step 1: Install Dependencies
+
 ```bash
-cd frontend/coffee-assistant
+cd frontend/frontend
 npm install
 ```
 
 ### Step 2: Configure Environment
+
 The `.env.local` file is already configured with:
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
@@ -17,6 +20,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 Update this URL if your backend runs on a different port.
 
 ### Step 3: Start the Development Server
+
 ```bash
 npm run dev
 ```
@@ -26,12 +30,14 @@ The app will be available at: **http://localhost:3000**
 ## 📱 Application Flow
 
 ### For Staff/Users
+
 1. **Access Main Page** - Open http://localhost:3000
 2. **Use Chat Interface** - Type questions about coffee outlets or drinkware products
 3. **Get AI Responses** - The RAG assistant retrieves and provides relevant information
 4. **Try Example Queries** - Click on example buttons to quickly test the system
 
 ### For Administrators
+
 1. **Click "Admin Login"** - Top-right corner of the main page
 2. **Enter Password** - Login with admin credentials
 3. **Access Dashboard** - Automatically redirected to `/admin`
@@ -45,8 +51,9 @@ The app will be available at: **http://localhost:3000**
 ## 🎨 Features Overview
 
 ### Main Chat Page (`/`)
+
 - **Header**: Logo, brand name, and admin login button
-- **Chat Panel**: 
+- **Chat Panel**:
   - Scrollable conversation area
   - Input box for questions
   - Send button
@@ -54,6 +61,7 @@ The app will be available at: **http://localhost:3000**
 - **AI Assistant**: Powered by RAG for accurate responses
 
 ### Admin Dashboard (`/admin`)
+
 - **Protected Route**: Only accessible after login
 - **Outlet Management Tab**:
   - Table with: Name, Category, Address, Stock Status
@@ -77,19 +85,25 @@ The app will be available at: **http://localhost:3000**
 ## 🔧 Troubleshooting
 
 ### Backend Connection Issues
+
 If you see "Failed to fetch" or similar errors:
+
 1. Ensure backend is running on port 8000
 2. Check `NEXT_PUBLIC_API_URL` in `.env.local`
 3. Verify CORS is enabled in backend
 
 ### Authentication Issues
+
 If admin login doesn't work:
+
 1. Check backend `/admin/login` endpoint
 2. Verify session/cookie handling
 3. Check browser console for errors
 
 ### Build Issues
+
 If you encounter build errors:
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules package-lock.json .next
@@ -100,7 +114,7 @@ npm run dev
 ## 📦 Project Structure
 
 ```
-coffee-assistant/
+frontend/
 ├── app/
 │   ├── admin/page.tsx       # Admin dashboard
 │   ├── layout.tsx           # Root layout
@@ -123,20 +137,24 @@ coffee-assistant/
 Ensure your backend implements these endpoints:
 
 **Chat**
+
 - `POST /chat` - Body: `{ message: string }`
 
 **Auth**
+
 - `POST /admin/login` - Body: `{ password: string }`
 - `POST /admin/logout`
 - `GET /admin/check`
 
 **Outlets**
+
 - `GET /outlets`
 - `POST /outlets` - Body: `{ name, category, address, maps_url, stock }`
 - `PUT /outlets/:id` - Body: `{ name, category, address, maps_url, stock }`
 - `DELETE /outlets/:id`
 
 **Products**
+
 - `GET /products`
 - `POST /products` - Body: `{ name, link, category, price, image_url }`
 - `PUT /products/:id` - Body: `{ name, link, category, price, image_url }`
@@ -145,16 +163,19 @@ Ensure your backend implements these endpoints:
 ## 🚢 Production Deployment
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
 
 ### Start Production Server
+
 ```bash
 npm start
 ```
 
 ### Deploy to Vercel
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -174,6 +195,7 @@ vercel
 ## 📞 Support
 
 For issues or questions, refer to:
+
 - `README_FRONTEND.md` for detailed documentation
 - Backend API documentation
 - Next.js documentation: https://nextjs.org/docs

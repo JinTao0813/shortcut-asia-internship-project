@@ -5,6 +5,7 @@ A modern, AI-powered coffee assistant application with RAG (Retrieval-Augmented 
 ## Features
 
 ### 1. Main Chat Page
+
 - **RAG Assistant**: AI-powered chat interface for querying coffee outlets and drinkware products
 - **Clean UI**: Modern design with rounded corners and theme color #0E186C
 - **Example Queries**: Quick-start buttons with common questions
@@ -12,14 +13,17 @@ A modern, AI-powered coffee assistant application with RAG (Retrieval-Augmented 
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 
 ### 2. Admin Authentication
+
 - **Secure Login**: Password-protected admin access
 - **Session Management**: Persistent authentication across page refreshes
 - **Modal Login**: Clean modal interface for admin login
 
 ### 3. Admin Dashboard
+
 Protected route accessible only after authentication:
 
 #### Outlet Management
+
 - View all coffee outlets
 - Add new outlets (name, category, address, maps URL, stock status)
 - Edit existing outlets
@@ -27,6 +31,7 @@ Protected route accessible only after authentication:
 - Stock status indicators (In Stock / Out of Stock)
 
 #### Product Management
+
 - View all drinkware products
 - Add new products (name, link, category, price, image URL)
 - Edit existing products
@@ -52,21 +57,25 @@ Protected route accessible only after authentication:
 ### Installation
 
 1. Navigate to the project directory:
+
    ```bash
-   cd frontend/coffee-assistant
+   cd frontend/frontend
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Create a `.env.local` file (already created):
+
    ```env
    NEXT_PUBLIC_API_URL=http://localhost:8000
    ```
 
 4. Run the development server:
+
    ```bash
    npm run dev
    ```
@@ -76,7 +85,7 @@ Protected route accessible only after authentication:
 ## Project Structure
 
 ```
-coffee-assistant/
+frontend/
 ├── app/
 │   ├── admin/
 │   │   └── page.tsx          # Admin dashboard with outlet/product management
@@ -98,20 +107,24 @@ coffee-assistant/
 The frontend expects the following backend endpoints:
 
 ### Chat
+
 - `POST /chat` - Send a message to the RAG assistant
 
 ### Authentication
+
 - `POST /admin/login` - Admin login with password
 - `POST /admin/logout` - Admin logout
 - `GET /admin/check` - Check authentication status
 
 ### Outlets
+
 - `GET /outlets` - Get all outlets
 - `POST /outlets` - Create a new outlet
 - `PUT /outlets/:id` - Update an outlet
 - `DELETE /outlets/:id` - Delete an outlet
 
 ### Products
+
 - `GET /products` - Get all products
 - `POST /products` - Create a new product
 - `PUT /products/:id` - Update a product
@@ -120,6 +133,7 @@ The frontend expects the following backend endpoints:
 ## Design System
 
 ### Colors
+
 - **Primary**: `#0E186C` (Deep blue)
 - **Background**: `#f5f7fa` to `#e8ebf0` (Gradient)
 - **White**: `#ffffff`
@@ -127,6 +141,7 @@ The frontend expects the following backend endpoints:
 - **Gray shades**: Various for UI elements
 
 ### Components
+
 - **Border Radius**: `rounded-xl` (0.75rem) and `rounded-2xl` (1rem)
 - **Shadows**: Soft shadows for elevation
 - **Transitions**: Smooth color and transform transitions
@@ -135,6 +150,7 @@ The frontend expects the following backend endpoints:
 ## Features in Detail
 
 ### Chat Interface
+
 - Welcome screen with example queries
 - Message history with timestamps
 - User messages (right-aligned, blue background)
@@ -143,6 +159,7 @@ The frontend expects the following backend endpoints:
 - Error handling with user-friendly messages
 
 ### Admin Dashboard
+
 - Tabbed interface for outlets and products
 - CRUD operations for both entities
 - Modal-based forms for adding/editing
@@ -151,6 +168,7 @@ The frontend expects the following backend endpoints:
 - Responsive tables with action buttons
 
 ### Authentication
+
 - Context-based authentication state
 - Protected routes with loading states
 - Automatic redirect for unauthenticated users
