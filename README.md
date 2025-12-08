@@ -8,6 +8,7 @@ A full-stack RAG (Retrieval-Augmented Generation) application designed to help Z
 
 - **🎥 Video Demo**: [Watch on YouTube](https://youtu.be/COY4JfGfMv8)
 - **🌐 Live Demo**: [https://shortcut-asia-internship-project.vercel.app/](https://shortcut-asia-internship-project.vercel.app/)
+- **🌐 Live Backend API**: [https://shortcut-asia-backend-891298862738.asia-southeast1.run.app](https://shortcut-asia-backend-891298862738.asia-southeast1.run.app)
 
 ## 🎯 Problem Statement
 
